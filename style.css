@@ -3452,3 +3452,28 @@ body { background: var(--ivory); letter-spacing: -.008em; }
   .work .project-card + .project-card { margin-top: 1rem; }
   .world-intro p { line-height: 1.75; }
 }
+
+
+/* Final usability pass: clear hierarchy, stable media and comfortable touch targets. */
+img { max-width: 100%; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.navbar nav a, .nav-button, .text-link, .project-link { position: relative; }
+.navbar nav a:focus-visible, .nav-button:focus-visible, .project-link:focus-visible {
+  outline-offset: 6px;
+}
+.work .project-visual { min-width: 0; }
+.work .project-visual img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.work .project-story summary { min-height: 48px; }
+.song, .play-button, .scrap-item, .modal-close { touch-action: manipulation; }
+.scrap-item:focus-visible { outline: 3px solid var(--burgundy); outline-offset: 5px; }
+.image-modal.open { overscroll-behavior: contain; }
+@media (max-width: 900px) {
+  .work .project-card { grid-template-columns: minmax(0,1fr); }
+  .work .project-visual { width: 100%; }
+  .work .project-info { width: 100%; }
+}
+@media (max-width: 600px) {
+  .work .project-story-body { gap: 1.2rem; }
+  .work .project-story dl { gap: 1rem; }
+  .contact-email { font-size: clamp(1.25rem,5.5vw,2.1rem); }
+}
