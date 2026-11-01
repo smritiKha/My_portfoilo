@@ -3687,3 +3687,54 @@ html { scroll-behavior:smooth; }
 section[id], main[id] { scroll-margin-top:85px; }
 @media (max-width:760px) { section[id],main[id] { scroll-margin-top:70px; } }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .loader { animation:none; opacity:0; visibility:hidden; } }
+
+
+/* Refined neutral editorial finish: ivory, ink, muted oxblood used sparingly. */
+:root {
+ --black:#252525; --dark:#252525; --ivory:#FBFAF7; --paper:#F2F0EC;
+ --burgundy:#714A50; --red:#714A50; --grey:#686561;
+ --line:rgba(37,37,37,.13); --dark-line:rgba(37,37,37,.13);
+ --editorial-line:rgba(37,37,37,.13);
+}
+body,.section-dark,.section-light,.world,.interests,.contact { background:#FBFAF7; color:#252525; }
+.navbar { background:rgba(251,250,247,.97); border-bottom:1px solid rgba(37,37,37,.09); box-shadow:none; }
+.navbar .logo,.navbar nav a { color:#252525; }
+.navbar nav a:hover,.navbar nav a:focus-visible { color:#714A50; }
+.navbar nav a::after { background:#714A50; }
+.nav-button,.button-light { background:#252525; color:#fff; border:1px solid #252525; }
+.nav-button:hover,.button-light:hover { background:#714A50; border-color:#714A50; color:#fff; }
+.hero { background:#FBFAF7; }
+.hero::before { background:radial-gradient(circle,rgba(224,217,207,.27),transparent 68%); }
+.hero h1,.hero h1 span,.section-heading h2,.world-intro h2,.skills h2,.game-intro h2,.contact h2 { color:#252525; }
+.hero h1 span,em,.contact h2 em { color:#714A50; }
+.hero .eyebrow,.section-label,.section-label.light,.mini-label { color:#716D68; }
+.hero-description,.hero-description-secondary,.about-text>p,.world-intro p,.skills-intro p,.game-intro p,.contact-note { color:#625E5A; }
+.hero-image-frame { border:9px solid #fff; box-shadow:14px 17px 0 #EAE6DF,0 18px 50px rgba(37,37,37,.09); }
+.about-image { box-shadow:12px 12px 0 #EAE6DF; }
+.work,.skills,.game-section { background:#F2F0EC; }
+.work .project-visual { background:#EAE7E2; border:1px solid rgba(37,37,37,.09); box-shadow:0 12px 35px rgba(37,37,37,.06); }
+.work .project-card,.work .project-story { border-color:rgba(37,37,37,.13); }
+.work .project-meta span { background:#FBFAF7; color:#595450; border-color:rgba(37,37,37,.14); }
+.work .project-info h3,.work .project-story h4 { color:#252525; }
+.work .project-info p,.work .project-story dd { color:#625E5A; }
+.work .project-story summary,.text-link,.project-link,.contact-email,.contact-social { color:#714A50; }
+.work .project-story dt,.work .project-story-eyebrow { color:#716D68; }
+.work .project-card::after { background:linear-gradient(90deg,#D4CBC3,transparent); }
+.skill-group,.memory-game { background:#FBFAF7; border-color:rgba(37,37,37,.12); box-shadow:none; }
+.skill-group:hover { border-color:rgba(113,74,80,.35); }
+.interest:hover { background:#F2F0EC; }
+.play-button { background:#252525; color:#fff; }
+.memory-card { background:#51454A; color:#fff; }
+.contact-email { border-color:#714A50; }
+.scrapbook { border-color:rgba(37,37,37,.1); }
+@media(max-width:760px) {
+ .navbar nav { background:#FBFAF7; border-color:rgba(37,37,37,.1); }
+ .navbar nav a { color:#252525; border-color:rgba(37,37,37,.1); }
+ .menu-toggle { color:#252525; border-color:rgba(37,37,37,.24); }
+ .menu-toggle span { background:#252525; }
+ .hero { background:#FBFAF7; }
+}
+@media(max-width:480px) {
+ .work .project-visual { background:#EAE7E2; }
+ .contact-email { color:#714A50; }
+}
