@@ -3675,3 +3675,15 @@ body { background:#FAF8F4; color:#292627; }
  .work .project-story summary { color:#572B37; }
  .contact-email { color:#572B37; }
 }
+
+
+/* Reliability fix: never let animations or loader block navigation/scrolling. */
+.loader { pointer-events:none; animation:portfolio-loader-dismiss .45s ease 1.5s forwards; }
+.loader.hide { display:none; }
+@keyframes portfolio-loader-dismiss { to { opacity:0; visibility:hidden; } }
+.reveal, .reveal.is-visible { opacity:1 !important; transform:none !important; }
+html, body { overflow-y:auto; }
+html { scroll-behavior:smooth; }
+section[id], main[id] { scroll-margin-top:85px; }
+@media (max-width:760px) { section[id],main[id] { scroll-margin-top:70px; } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .loader { animation:none; opacity:0; visibility:hidden; } }
