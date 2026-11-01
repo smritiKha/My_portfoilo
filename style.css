@@ -3327,3 +3327,50 @@ body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; 
 @media (prefers-reduced-motion: reduce) {
   .work .project-card::after { transition: none; }
 }
+
+
+/* Editorial project case studies — details stay optional, so the gallery remains airy. */
+.work-intro { max-width: 54ch; margin: -1.4rem 0 2.5rem; color: rgba(243,239,232,.7); line-height: 1.8; font-size: clamp(.95rem,1.2vw,1.05rem); }
+.work .project-card { align-items: start; }
+.work .project-info { align-self: center; }
+.work .project-visual { align-self: start; }
+.work .project-story {
+  grid-column: 1 / -1; width: 100%; margin-top: .2rem;
+  border-top: 1px solid rgba(243,239,232,.15);
+  border-bottom: 1px solid rgba(243,239,232,.15);
+}
+.work .project-story summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; padding: 1.1rem .15rem; font-size: .9rem; font-weight: 600;
+  letter-spacing: .025em; color: var(--ivory); transition: color .2s ease;
+}
+.work .project-story summary::-webkit-details-marker { display: none; }
+.work .project-story summary:hover { color: #e5aeb5; }
+.work .project-story summary span { font-size: 1.2rem; transition: transform .25s ease; }
+.work .project-story[open] summary span { transform: rotate(45deg); }
+.work .project-story-body {
+  padding: clamp(1.2rem,3vw,2.5rem) 0 clamp(1.5rem,3vw,2.75rem);
+  display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 1.25rem 3rem;
+}
+.work .project-story-eyebrow {
+  grid-column: 1 / -1; color: #dca0aa; font-size: .75rem;
+  font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+}
+.work .project-story h4 {
+  font-family: "Playfair Display", serif; font-size: clamp(1.55rem,2.7vw,2.5rem);
+  font-weight: 500; line-height: 1.2; max-width: 18ch; color: var(--ivory);
+}
+.work .project-story dl { display: grid; gap: 1.3rem; }
+.work .project-story dl div { display: grid; grid-template-columns: 105px minmax(0,1fr); gap: 1rem; }
+.work .project-story dt { font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; color: #dca0aa; padding-top: .25rem; }
+.work .project-story dd { color: rgba(243,239,232,.76); line-height: 1.75; margin: 0; }
+.work .project-story-note { grid-column: 2; color: rgba(243,239,232,.48); font-size: .82rem; }
+@media (max-width: 900px) {
+  .work .project-story-body { grid-template-columns: 1fr; }
+  .work .project-story-note { grid-column: 1; }
+}
+@media (max-width: 600px) {
+  .work-intro { margin: -1rem 0 2rem; }
+  .work .project-story dl div { grid-template-columns: 1fr; gap: .3rem; }
+  .work .project-story h4 { max-width: none; }
+}
