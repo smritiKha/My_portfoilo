@@ -40,6 +40,25 @@ navLinks.forEach((link) => {
 });
 
 
+/* Close the mobile menu predictably on Escape, outside taps, and resizing. */
+function closeMobileMenu() {
+  navbar.classList.remove("menu-open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.setAttribute("aria-label", "Open navigation menu");
+}
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && navbar.classList.contains("menu-open")) {
+    closeMobileMenu();
+    menuToggle.focus();
+  }
+});
+document.addEventListener("pointerdown", (event) => {
+  if (navbar.classList.contains("menu-open") && !navbar.contains(event.target)) closeMobileMenu();
+});
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 760 && navbar.classList.contains("menu-open")) closeMobileMenu();
+});
+
 /* ================= SCROLL REVEALS ================= */
 
 const revealElements = document.querySelectorAll(
