@@ -3295,3 +3295,35 @@ body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; 
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Signature finishing touches: editorial, personal, and understated. */
+.skip-link {
+  position: fixed; top: 12px; left: 12px; z-index: 11000;
+  padding: 12px 18px; background: var(--ivory); color: var(--black);
+  border-radius: 6px; font-weight: 700; transform: translateY(-160%);
+}
+.skip-link:focus { transform: translateY(0); }
+.navbar { transition: background-color .3s ease, box-shadow .3s ease; }
+.navbar a { text-underline-offset: 5px; }
+.hero-content h1 { letter-spacing: -.045em; }
+.hero-image-frame { overflow: hidden; }
+.hero-image-frame img { display: block; }
+.work .project-card { position: relative; }
+.work .project-card::after {
+  content: ""; position: absolute; bottom: 0; left: 0; height: 1px; width: 0;
+  background: linear-gradient(90deg, var(--burgundy), transparent);
+  transition: width .55s ease; pointer-events: none;
+}
+.work .project-card:hover::after { width: 100%; }
+.work .project-info h3 { text-wrap: balance; }
+.work .project-info p { line-height: 1.8; }
+.work .project-visual img { max-width: 100%; }
+.contact-email { line-height: 1.35; }
+@media (max-width: 600px) {
+  .work .project-card { gap: 1.25rem; }
+  .work .project-info p { line-height: 1.7; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work .project-card::after { transition: none; }
+}
