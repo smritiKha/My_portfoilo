@@ -3832,3 +3832,179 @@ body { background:#F6F1E9; color:#201B20; }
  .game-section.section-dark { background:#F6F1E9; }
  .contact.section-light { background:#722F40; }
 }
+
+
+/* PROJECT GALLERY REBUILD: featured editorial card + tidy two-column gallery.
+   Preserve original project text, screenshots, GitHub links and case studies. */
+.work .section-heading { margin-bottom:clamp(2.2rem,4vw,4rem); }
+.work .work-intro { max-width:650px; margin-bottom:clamp(2.5rem,4vw,4.5rem); line-height:1.75; }
+.work .projects {
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:clamp(1.2rem,2.5vw,2.4rem);
+ max-width:1360px;
+ margin-inline:auto;
+ align-items:stretch;
+}
+.work .projects>.project-card {
+ display:flex;
+ flex-direction:column;
+ gap:0;
+ min-width:0;
+ width:100%;
+ margin:0;
+ padding:0;
+ overflow:hidden;
+ border:1px solid rgba(32,27,32,.12);
+ border-radius:16px;
+ background:#F6F1E9;
+ box-shadow:0 14px 38px rgba(32,27,32,.06);
+ transition:transform .28s ease,box-shadow .28s ease;
+}
+.work .projects>.project-card:hover {
+ transform:translateY(-5px);
+ box-shadow:0 22px 48px rgba(32,27,32,.11);
+}
+.work .projects>.project-card::after { display:none; }
+.work .projects>.project-card .project-visual {
+ width:100%;
+ aspect-ratio:16/10;
+ min-height:0;
+ padding:clamp(16px,2vw,28px);
+ display:grid;
+ place-items:center;
+ overflow:hidden;
+ background:#DCC8CA;
+ border:0;
+ border-bottom:1px solid rgba(32,27,32,.09);
+ border-radius:0;
+ box-shadow:none;
+}
+.work .projects>.project-card:nth-child(2) .project-visual { background:#E7D9D4; }
+.work .projects>.project-card:nth-child(3) .project-visual { background:#EBDDD5; }
+.work .projects>.project-card:nth-child(4) .project-visual { background:#DCC9CF; }
+.work .projects>.project-card:nth-child(5) .project-visual { background:#E8D9DA; }
+.work .projects>.project-card .project-visual img {
+ display:block;
+ width:100%;
+ height:100%;
+ max-height:100%;
+ object-fit:contain;
+ object-position:center;
+ border-radius:7px;
+}
+.work .projects>.project-card .project-info {
+ flex:1;
+ display:flex;
+ flex-direction:column;
+ align-items:flex-start;
+ justify-content:flex-start;
+ gap:0;
+ padding:clamp(1.35rem,2.7vw,2.3rem);
+ width:100%;
+}
+.work .projects>.project-card .project-info h3 {
+ margin:0;
+ font-size:clamp(1.6rem,2.4vw,2.45rem);
+ line-height:1.15;
+ color:#201B20;
+}
+.work .projects>.project-card .project-info p {
+ max-width:62ch;
+ margin-top:.85rem;
+ font-size:clamp(.9rem,1.1vw,1rem);
+ line-height:1.7;
+ color:#554B4E;
+}
+.work .projects>.project-card .project-meta {
+ display:flex;
+ flex-wrap:wrap;
+ gap:7px;
+ margin-top:1.4rem;
+}
+.work .projects>.project-card .project-meta span {
+ padding:6px 10px;
+ font-size:.67rem;
+ color:#722F40;
+ background:rgba(114,47,64,.055);
+ border:1px solid rgba(114,47,64,.19);
+ border-radius:50px;
+}
+.work .projects>.project-card .project-link {
+ display:inline-flex;
+ align-items:center;
+ min-height:44px;
+ margin-top:auto;
+ padding-top:1.2rem;
+ font-weight:700;
+ font-size:.82rem;
+ letter-spacing:.01em;
+ color:#722F40;
+}
+.work .projects>.project-card .project-story {
+ width:100%;
+ margin:0;
+ padding:0 clamp(1.35rem,2.7vw,2.3rem) clamp(.65rem,1.2vw,1rem);
+ border:0;
+ border-top:1px solid rgba(32,27,32,.11);
+ border-radius:0;
+ background:transparent;
+}
+.work .projects>.project-card .project-story summary {
+ min-height:54px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:1rem;
+ color:#722F40;
+}
+.work .projects>.project-card .project-story-body { padding-bottom:1rem; }
+.work .projects>.project-card:first-child {
+ grid-column:1/-1;
+ display:grid;
+ grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+}
+.work .projects>.project-card:first-child .project-visual {
+ aspect-ratio:auto;
+ height:100%;
+ min-height:380px;
+ border-bottom:0;
+ border-right:1px solid rgba(32,27,32,.09);
+ background:#D8BFC4;
+}
+.work .projects>.project-card:first-child .project-info {
+ padding:clamp(2rem,4vw,4rem);
+ justify-content:center;
+}
+.work .projects>.project-card:first-child .project-info h3 {
+ font-size:clamp(2.5rem,4vw,4.5rem);
+}
+.work .projects>.project-card:first-child .project-story {
+ grid-column:1/-1;
+ padding-inline:clamp(2rem,4vw,4rem);
+}
+@media(max-width:850px) {
+ .work .projects { grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+ .work .projects>.project-card:first-child { grid-template-columns:1fr; }
+ .work .projects>.project-card:first-child .project-visual {
+  height:auto; min-height:0; aspect-ratio:16/10;
+  border-right:0; border-bottom:1px solid rgba(32,27,32,.09);
+ }
+ .work .projects>.project-card:first-child .project-info { padding:2rem; }
+}
+@media(max-width:650px) {
+ .work .projects { grid-template-columns:1fr; gap:20px; }
+ .work .projects>.project-card:first-child { grid-column:auto; }
+ .work .projects>.project-card .project-visual,
+ .work .projects>.project-card:first-child .project-visual { aspect-ratio:16/11; padding:16px; }
+ .work .projects>.project-card .project-info,
+ .work .projects>.project-card:first-child .project-info { padding:1.4rem; }
+ .work .projects>.project-card:first-child .project-info h3 { font-size:2.2rem; }
+ .work .projects>.project-card .project-story,
+ .work .projects>.project-card:first-child .project-story { padding:0 1.4rem .65rem; }
+ .work .projects>.project-card:hover { transform:none; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .work .projects>.project-card { transition:none; }
+ .work .projects>.project-card:hover { transform:none; }
+}
