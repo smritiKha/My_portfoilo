@@ -3738,3 +3738,33 @@ body,.section-dark,.section-light,.world,.interests,.contact { background:#FBFAF
  .work .project-visual { background:#EAE7E2; }
  .contact-email { color:#714A50; }
 }
+
+
+/* Distinct but harmonious section identities — alternating editorial color rhythm */
+.hero.section-dark { background:#FBFAF7; color:#252525; }
+.about.section-light { background:#EDE5DD; color:#252525; }
+.work.section-dark { background:#F5F0E9; color:#252525; }
+.world.section-light { background:#FBFAF7; color:#252525; }
+.skills.section-dark { background:#E5E9E2; color:#252525; }
+.interests.section-light { background:#F1E6E5; color:#252525; }
+.game-section.section-dark { background:#EDE5DD; color:#252525; }
+.contact.section-light { background:#F8F4ED; color:#252525; }
+.about .section-label,.work .section-label,.world .section-label,
+.skills .section-label,.interests .section-label,.game-section .section-label,
+.contact .section-label { color:#655C58; }
+.about em { color:#714A50; }
+.work .project-visual { background:#E7DDD5; }
+.skills .skill-group { background:rgba(255,255,255,.78); border-color:rgba(43,56,44,.15); }
+.interests .interest:hover { background:rgba(255,255,255,.45); }
+.game-section .memory-game { background:#FBFAF7; }
+.contact .contact-email { color:#714A50; }
+@media (max-width:760px) {
+ .hero.section-dark { background:#FBFAF7; }
+ .about.section-light { background:#EDE5DD; }
+ .work.section-dark { background:#F5F0E9; }
+ .world.section-light { background:#FBFAF7; }
+ .skills.section-dark { background:#E5E9E2; }
+ .interests.section-light { background:#F1E6E5; }
+ .game-section.section-dark { background:#EDE5DD; }
+ .contact.section-light { background:#F8F4ED; }
+}
