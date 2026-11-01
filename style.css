@@ -4093,3 +4093,28 @@ body { background:#F6F1E9; color:#201B20; }
  .work .showcase-hint { max-width:160px;text-align:right;font-size:.7rem; }
 }
 @media(prefers-reduced-motion:reduce) { .work .showcase-arrow,.work .showcase-dot { transition:none; } }
+
+
+/* Contact email legibility: stable contrast in normal, hover, focus and visited states. */
+.contact.section-light .contact-email,
+.contact.section-light .contact-email:link,
+.contact.section-light .contact-email:visited {
+ color:#201B20;
+ background:#F6F1E9;
+ border:1px solid #F6F1E9;
+ text-decoration:none;
+ opacity:1;
+}
+.contact.section-light .contact-email:hover,
+.contact.section-light .contact-email:focus-visible,
+.contact.section-light .contact-email:active {
+ color:#F6F1E9;
+ background:#201B20;
+ border-color:#F6F1E9;
+ opacity:1;
+}
+.contact.section-light .contact-email span:first-child { color:inherit; }
+.contact.section-light .contact-email .contact-email-arrow { color:#722F40; }
+.contact.section-light .contact-email:hover .contact-email-arrow,
+.contact.section-light .contact-email:focus-visible .contact-email-arrow,
+.contact.section-light .contact-email:active .contact-email-arrow { color:#E9C5CB; }
