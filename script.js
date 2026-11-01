@@ -6,10 +6,12 @@ window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
 
   setTimeout(() => {
-    loader.classList.add("hide");
-  }, 600);
+    loader?.classList.add("hide");
+  }, 450);
 });
 
+
+window.setTimeout(() => document.getElementById("loader")?.classList.add("hide"), 3000);
 
 /* ================= MOBILE NAVIGATION ================= */
 
@@ -118,7 +120,7 @@ function animateCursor() {
   requestAnimationFrame(animateCursor);
 }
 
-animateCursor();
+if (window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches) animateCursor();
 
 
 /* ================= HERO PARALLAX ================= */
@@ -127,7 +129,7 @@ const heroImage = document.querySelector(".hero-image-frame");
 
 window.addEventListener("scroll", () => {
 
-  if (!heroImage) return;
+  if (!heroImage || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const scrollY = window.scrollY;
 
@@ -150,6 +152,7 @@ magneticElements.forEach((element) => {
 
   element.addEventListener("mousemove", (event) => {
 
+    if (!window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches) return;
     const rect = element.getBoundingClientRect();
 
     const x =
@@ -418,75 +421,46 @@ loadSong(0);
 
 /* ================= SCRAPBOOK MODAL ================= */
 
-const imageModal =
-  document.getElementById("imageModal");
-
-const modalImage =
-  document.getElementById("modalImage");
-
-const modalClose =
-  document.getElementById("modalClose");
-
-const scrapbookItems =
-  document.querySelectorAll(".scrap-item");
-
+const imageModal = document.getElementById("imageModal");
+const modalImage = document.getElementById("modalImage");
+const modalClose = document.getElementById("modalClose");
+const scrapbookItems = document.querySelectorAll(".scrap-item");
+let lastModalTrigger = null;
 
 scrapbookItems.forEach((item) => {
-
   item.addEventListener("click", () => {
-
-    const image =
-      item.dataset.image;
-
-    modalImage.src = image;
-
+    lastModalTrigger = item;
+    modalImage.src = item.dataset.image;
+    modalImage.alt = item.querySelector("img")?.alt || "Scrapbook image";
     imageModal.classList.add("open");
-
+    imageModal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-
+    modalClose.focus();
   });
-
 });
 
-
 function closeModal() {
-
+  if (!imageModal.classList.contains("open")) return;
   imageModal.classList.remove("open");
-
+  imageModal.setAttribute("aria-hidden", "true");
+  modalImage.removeAttribute("src");
   document.body.style.overflow = "";
-
+  lastModalTrigger?.focus();
 }
 
-
-modalClose.addEventListener(
-  "click",
-  closeModal
-);
-
-
-imageModal.addEventListener(
-  "click",
-  (event) => {
-
-    if (event.target === imageModal) {
-      closeModal();
-    }
-
+modalClose.addEventListener("click", closeModal);
+imageModal.addEventListener("click", (event) => {
+  if (event.target === imageModal) closeModal();
+});
+imageModal.addEventListener("keydown", (event) => {
+  if (event.key === "Tab") {
+    event.preventDefault();
+    modalClose.focus();
   }
-);
-
-
-document.addEventListener(
-  "keydown",
-  (event) => {
-
-    if (event.key === "Escape") {
-      closeModal();
-    }
-
-  }
-);
-
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeModal();
+});
 
 /* ================= MEMORY MATCHING GAME ================= */
 
@@ -657,6 +631,7 @@ images.forEach((image) => {
 
   image.addEventListener("mousemove", (event) => {
 
+    if (!window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches) return;
     const rect =
       image.getBoundingClientRect();
 
