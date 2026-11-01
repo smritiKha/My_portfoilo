@@ -59,6 +59,34 @@ window.addEventListener("resize", () => {
   if (window.innerWidth > 760 && navbar.classList.contains("menu-open")) closeMobileMenu();
 });
 
+/* Smooth section navigation without exposing #section in the address bar. */
+function cleanPortfolioUrl() {
+  return window.location.pathname + window.location.search;
+}
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const id = link.getAttribute("href")?.slice(1);
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start"
+    });
+    if (window.location.hash) history.replaceState(history.state, "", cleanPortfolioUrl());
+  });
+});
+if (window.location.hash) {
+  const initialSection = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+  if (initialSection) {
+    window.addEventListener("load", () => {
+      initialSection.scrollIntoView({behavior:"auto",block:"start"});
+      history.replaceState(history.state,"",cleanPortfolioUrl());
+    }, {once:true});
+  }
+}
+
 /* ================= SCROLL REVEALS ================= */
 
 const revealElements = document.querySelectorAll(
