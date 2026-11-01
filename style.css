@@ -3590,3 +3590,88 @@ body { background:var(--ivory); }
 @media (prefers-reduced-motion:reduce) {
  .navbar nav,.menu-toggle span { transition:none; }
 }
+
+
+/* PORCELAIN & BURGUNDY — cohesive light-first palette, desktop + mobile */
+:root {
+ --black:#292627; --dark:#572B37; --ivory:#FAF8F4; --paper:#F1EAE4;
+ --burgundy:#572B37; --red:#7D4352; --grey:#716568;
+ --line:rgba(87,43,55,.16); --dark-line:rgba(250,248,244,.22);
+ --focus-ring:#9C6877; --editorial-line:rgba(87,43,55,.16);
+}
+body { background:#FAF8F4; color:#292627; }
+::selection { background:#572B37; color:#FAF8F4; }
+.navbar { background:rgba(250,248,244,.97); color:#292627; border-bottom:1px solid rgba(87,43,55,.11); box-shadow:0 8px 30px rgba(49,30,35,.035); }
+.navbar .logo,.navbar nav a { color:#292627; }
+.navbar nav a:hover,.navbar nav a:focus-visible { color:#572B37; }
+.navbar nav a::after { background:#572B37; }
+.nav-button { background:#572B37; color:#FAF8F4; border-color:#572B37; }
+.nav-button:hover { background:#713C4B; color:#fff; }
+.section-dark,.section-light { background:#FAF8F4; color:#292627; }
+.hero { background:linear-gradient(125deg,#FAF8F4 0%,#FAF8F4 56%,#F3EBE7 100%); }
+.hero::before { background:radial-gradient(circle,rgba(196,166,161,.16),transparent 68%); }
+.hero h1,.hero h1 span,.section-heading h2,.world-intro h2,.skills h2,.game-intro h2,.contact h2 { color:#292627; }
+.hero h1 span,em,.contact h2 em { color:#572B37; }
+.hero .eyebrow,.section-label,.section-label.light,.mini-label { color:#7D4352; }
+.hero-description,.hero-description-secondary,.about-text > p,.world-intro p,.skills-intro p,.game-intro p,.contact-note { color:#62595B; }
+.button-light { background:#572B37; color:#FAF8F4; }
+.button-light:hover { background:#713C4B; }
+.text-link,.project-link { color:#572B37; }
+.hero-caption,.hero-scroll { color:#716568; }
+.hero-image-frame { border-color:#FAF8F4; box-shadow:14px 18px 0 #E8D8D5,0 22px 65px rgba(87,43,55,.13); }
+.about-image { box-shadow:14px 14px 0 #E8D8D5; }
+.about-details { border-color:rgba(87,43,55,.16); }
+.about-details span { color:#716568; }
+.about-details strong { color:#292627; }
+.work { background:#F4EEEA; }
+.work .section-heading h2,.work .section-label.light { color:#292627; }
+.work-intro { color:#62595B; }
+.work .project-card { border-color:rgba(87,43,55,.16); }
+.work .project-visual { background:linear-gradient(145deg,#E9DEDB,#F9F5F1); border:1px solid rgba(87,43,55,.13); box-shadow:0 16px 46px rgba(87,43,55,.075); }
+.work .project-info h3 { color:#292627; }
+.work .project-info p { color:#62595B; }
+.work .project-meta span { color:#572B37; border:1px solid rgba(87,43,55,.2); background:rgba(255,255,255,.45); }
+.work .project-story { border-color:rgba(87,43,55,.2); }
+.work .project-story summary { color:#572B37; }
+.work .project-story summary:hover { color:#8B5160; }
+.work .project-story-eyebrow,.work .project-story dt { color:#7D4352; }
+.work .project-story h4 { color:#292627; }
+.work .project-story dd { color:#62595B; }
+.work .project-story-note { color:#716568; }
+.work .project-card::after { background:linear-gradient(90deg,#572B37,transparent); }
+.world { background:#FAF8F4; }
+.personal-video { box-shadow:0 18px 55px rgba(87,43,55,.09); }
+.music-player { border-color:rgba(87,43,55,.16); }
+.play-button { background:#572B37; color:#FAF8F4; }
+.now-playing,.track-artist { color:#716568; }
+.scrapbook { border:1px solid rgba(87,43,55,.12); }
+.skills { background:#F4EEEA; }
+.skills .section-label.light,.skills h2,.skills h3 { color:#292627; }
+.skill-group { background:#FAF8F4; border:1px solid rgba(87,43,55,.13); box-shadow:0 10px 28px rgba(87,43,55,.04); }
+.skill-group:hover { border-color:rgba(87,43,55,.32); }
+.skill-group p,.skills .skill-tags li { color:#62595B; }
+.skills .skill-tags li { border-color:rgba(87,43,55,.2); }
+.interests { background:#FAF8F4; }
+.interest { border-color:rgba(87,43,55,.16); }
+.interest:hover { background:#F4EEEA; }
+.game-section { background:#F4EEEA; }
+.game-section .section-label.light,.game-intro h2 { color:#292627; }
+.memory-game { background:#FAF8F4; border:1px solid rgba(87,43,55,.15); box-shadow:0 12px 35px rgba(87,43,55,.06); }
+.memory-card { background:linear-gradient(145deg,#693A47,#572B37); border-color:rgba(87,43,55,.15); color:#FAF8F4; }
+.memory-stats,.game-status { color:#62595B; }
+.contact { background:#FAF8F4; }
+.contact-email { color:#572B37; border-color:#572B37; }
+.contact-footer { border-color:rgba(87,43,55,.16); }
+.contact-social { color:#572B37; }
+@media (max-width:760px) {
+ .navbar nav { background:#FAF8F4; border-color:rgba(87,43,55,.12); box-shadow:0 18px 36px rgba(87,43,55,.13); }
+ .navbar nav a { color:#292627; border-color:rgba(87,43,55,.13); }
+ .menu-toggle { color:#572B37; border-color:rgba(87,43,55,.3); }
+ .menu-toggle span { background:#572B37; }
+ .hero { background:linear-gradient(180deg,#FAF8F4,#F4EEEA); }
+}
+@media (max-width:480px) {
+ .work .project-visual { background:#F3EBE7; }
+ .work .project-story summary { color:#572B37; }
+ .contact-email { color:#572B37; }
+}
