@@ -702,3 +702,61 @@ images.forEach((image) => {
   });
 
 });
+
+/* FULL-SCREEN PROJECT SHOWCASE — accessible controls, keyboard and swipe */
+(() => {
+ const gallery=document.getElementById("projectShowcase");
+ if(!gallery) return;
+ const slides=Array.from(gallery.querySelectorAll(":scope > .project-card"));
+ const previous=document.getElementById("showcasePrev");
+ const next=document.getElementById("showcaseNext");
+ const current=document.getElementById("showcaseCurrent");
+ const total=document.getElementById("showcaseTotal");
+ const dots=document.getElementById("showcaseDots");
+ let index=0;
+ total.textContent=String(slides.length).padStart(2,"0");
+ const indicators=slides.map((slide,i)=>{
+  const dot=document.createElement("button");
+  dot.type="button";
+  dot.className="showcase-dot";
+  dot.setAttribute("aria-label", "Show project "+(i+1)+": "+(slide.querySelector("h3")?.textContent.trim()||"Project"));
+  dot.addEventListener("click",()=>show(i));
+  dots.appendChild(dot);
+  return dot;
+ });
+ function show(nextIndex){
+  index=(nextIndex+slides.length)%slides.length;
+  slides.forEach((slide,i)=>{
+   const active=i===index;
+   slide.hidden=!active;
+   slide.classList.toggle("showcase-active",active);
+   slide.setAttribute("aria-hidden",String(!active));
+   if(!active) slide.querySelectorAll("details[open]").forEach(d=>d.open=false);
+  });
+  indicators.forEach((dot,i)=>{
+   dot.classList.toggle("is-active",i===index);
+   dot.setAttribute("aria-current",i===index?"true":"false");
+  });
+  current.textContent=String(index+1).padStart(2,"0");
+ }
+ previous.addEventListener("click",()=>show(index-1));
+ next.addEventListener("click",()=>show(index+1));
+ gallery.setAttribute("tabindex","0");
+ gallery.addEventListener("keydown",(event)=>{
+  if(event.target.closest("a,button,summary,input,textarea,select"))return;
+  if(event.key==="ArrowRight"){event.preventDefault();show(index+1);}
+  if(event.key==="ArrowLeft"){event.preventDefault();show(index-1);}
+ });
+ let startX=0,startY=0;
+ gallery.addEventListener("touchstart",event=>{
+  if(event.touches.length!==1)return;
+  startX=event.touches[0].clientX;startY=event.touches[0].clientY;
+ },{passive:true});
+ gallery.addEventListener("touchend",event=>{
+  if(event.changedTouches.length!==1)return;
+  const dx=event.changedTouches[0].clientX-startX;
+  const dy=event.changedTouches[0].clientY-startY;
+  if(Math.abs(dx)>65 && Math.abs(dx)>Math.abs(dy)*1.5)show(index+(dx<0?1:-1));
+ },{passive:true});
+ show(0);
+})();
